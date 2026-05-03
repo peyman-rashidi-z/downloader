@@ -37,11 +37,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y aria2 zip
 
-      - name: AVASAM Downloader - https://avasam.ir
-        run: |
-          echo "🏷️  AVASAM - Your Download Solution"
-          echo "🌐 https://avasam.ir"
-          echo ""
 
       - name: Download files
         run: |
@@ -50,7 +45,7 @@ jobs:
           SPLIT_THRESHOLD_MB="${{ github.event.inputs.split_threshold_mb }}"
           SPLIT_THRESHOLD_BYTES=$(( SPLIT_THRESHOLD_MB * 1024 * 1024 ))
 
-          echo "🏷️  AVASAM (https://avasam.ir) - Downloading with mode: $MODE"
+          echo "🏷️ Downloading with mode: $MODE"
           echo "Split threshold: $SPLIT_THRESHOLD_MB MB"
 
           mkdir -p downloads tmp_downloads
@@ -99,7 +94,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          echo "🏷️  AVASAM (https://avasam.ir) - Preparing to commit files"
+          echo "🏷️ Preparing to commit files"
 
           # Collect all new/modified files under downloads/
           mapfile -t ALL_FILES < <(git ls-files --others --modified --exclude-standard downloads/)
@@ -131,4 +126,4 @@ jobs:
             echo "✅ Batch $BATCH_NUM pushed"
           done
 
-          echo "🎉 All $TOTAL files pushed in $BATCH_NUM batch(es) — AVASAM (https://avasam.ir)"
+          echo "🎉 All $TOTAL files pushed in $BATCH_NUM batch(es) "
